@@ -1,8 +1,9 @@
+/*tslint:disable*/
 import * as React from 'react';
+import {BrowserRouter,Route, Switch} from 'react-router-dom';
 import './App.css';
-import { Footer } from './components/Footer';
-import { Header } from './components/Header';
-import { Main } from './components/Main';
+import { ActualApp } from './components/ActualApp';
+import { Winner } from './components/Winner';
 // import {BrowserRouter,Route} from "react-router-dom" 
 
 
@@ -10,14 +11,12 @@ import { Main } from './components/Main';
 class App extends React.Component {
   public render() {
     return (
-      
-      <div id="one">
-        <Header/>
-        <hr/>
-        <Main/>
-        <hr/>
-        <Footer/>
-      </div>
+      <BrowserRouter>
+      <Switch>
+      <Route exact path="/" component={ActualApp}/>
+      <Route path="/winner" component={Winner}/>
+      </Switch>
+      </BrowserRouter>
     );
   }
 }

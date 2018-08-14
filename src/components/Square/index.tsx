@@ -1,6 +1,7 @@
 /*tslint:disable*/
 import * as React from 'react';
 import "./index.css";
+import { Redirect } from 'react-router';
 //import {RouteElement} from "../RouteElement";
 
 interface proptype {
@@ -80,9 +81,12 @@ export class Square extends React.Component<proptype, { values:  number[],entere
 public checkMethod(): void{
   if(this.state.checkValues.has(0) && this.state.checkValues.has(1) && this.state.checkValues.has(2) || this.state.checkValues.has(3) && this.state.checkValues.has(4) && this.state.checkValues.has(5) || this.state.checkValues.has(6) && this.state.checkValues.has(7) && this.state.checkValues.has(8) || this.state.checkValues.has(0) && this.state.checkValues.has(3) && this.state.checkValues.has(6) || this.state.checkValues.has(1) && this.state.checkValues.has(4) && this.state.checkValues.has(7) || this.state.checkValues.has(2) && this.state.checkValues.has(5) && this.state.checkValues.has(8)|| this.state.checkValues.has(0) && this.state.checkValues.has(4) && this.state.checkValues.has(8) || this.state.checkValues.has(2) && this.state.checkValues.has(4) && this.state.checkValues.has(6)){
     // console.log(this.props.playerName);
-    // console.log("BINGO!!!");
+    console.log("BINGO!!!");
+     debugger
+      
+        <Redirect push to="/winner"/>
+      
     
-   // <RouteElement/>
   }
 }
 
