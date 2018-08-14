@@ -1,7 +1,7 @@
 /*tslint:disable*/
 import * as React from 'react';
 import "./index.css";
-import { Redirect } from 'react-router';
+import { Redirect } from 'react-router-dom';
 //import {RouteElement} from "../RouteElement";
 
 interface proptype {
@@ -9,7 +9,7 @@ interface proptype {
   playerName:string
 }
 
-export class Square extends React.Component<proptype, { values:  number[],enteredValues:  Set<string>,checkValues: Set<number>}> {
+export class Square extends React.Component<proptype, { values:  number[],enteredValues:  Set<string>,checkValues: Set<number>,redirect: boolean}> {
   constructor(props: proptype){
     super(props);
     const enteredValues= new Set<string>();
@@ -17,7 +17,8 @@ export class Square extends React.Component<proptype, { values:  number[],entere
     const checkValues= new Set<number>();
     this.state={values: valuesDuplicates,
       enteredValues:enteredValues,
-      checkValues:checkValues};
+      checkValues:checkValues,
+    redirect:false};
    }  
 
   public randomNumbers(): number[] {
@@ -34,9 +35,15 @@ export class Square extends React.Component<proptype, { values:  number[],entere
     }
   
     public render() {
-     
+      if(this.state.redirect){
+        return(
+          <Redirect  to={`/winner/${this.props.playerName}`}/>
+        );
+      }
+      else{
       return (
     <div>
+       
         <div className="row">
           {this.displaySpan(this.state.values[0])}
           {this.displaySpan(this.state.values[1])}
@@ -54,9 +61,11 @@ export class Square extends React.Component<proptype, { values:  number[],entere
           {this.displaySpan(this.state.values[7])}
           {this.displaySpan(this.state.values[8])}
         </div> 
-
+        
     </div>
+    
       );
+    }
     }
 
   public displaySpan(valueDup: number): React.ReactFragment {
@@ -82,10 +91,10 @@ public checkMethod(): void{
   if(this.state.checkValues.has(0) && this.state.checkValues.has(1) && this.state.checkValues.has(2) || this.state.checkValues.has(3) && this.state.checkValues.has(4) && this.state.checkValues.has(5) || this.state.checkValues.has(6) && this.state.checkValues.has(7) && this.state.checkValues.has(8) || this.state.checkValues.has(0) && this.state.checkValues.has(3) && this.state.checkValues.has(6) || this.state.checkValues.has(1) && this.state.checkValues.has(4) && this.state.checkValues.has(7) || this.state.checkValues.has(2) && this.state.checkValues.has(5) && this.state.checkValues.has(8)|| this.state.checkValues.has(0) && this.state.checkValues.has(4) && this.state.checkValues.has(8) || this.state.checkValues.has(2) && this.state.checkValues.has(4) && this.state.checkValues.has(6)){
     // console.log(this.props.playerName);
     console.log("BINGO!!!");
-     debugger
-      
-        <Redirect push to="/winner"/>
-      
+    debugger
+    this.setState({
+      redirect: true
+    });
     
   }
 }

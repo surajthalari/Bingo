@@ -19,6 +19,6 @@ class App extends React.Component {
       </BrowserRouter>
     );
   }
-}
+}<Route path="/winner" component={Winner}/>
 
 export default App;
