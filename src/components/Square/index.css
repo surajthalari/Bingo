@@ -5,6 +5,7 @@
 
 .col-lg-2{
     background-color: bisque;
+    text-align: center;
 }
 
 #value0{
@@ -61,21 +62,8 @@
 
 
 .strikethrough {
-    position: relative;
+    text-align: center;
+    background-color: coral
   }
-  .strikethrough:before {
-    position: absolute;
-    content: "";
-    left: 0;
-    top: 50%;
-    right: 0;
-    border-top: 1px solid;
-    border-color: inherit;
   
-    -webkit-transform:rotate(-5deg);
-    -moz-transform:rotate(-5deg);
-    -ms-transform:rotate(-5deg);
-    -o-transform:rotate(-5deg);
-    transform:rotate(-5deg);
-  }
 

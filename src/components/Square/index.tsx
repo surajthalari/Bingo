@@ -1,9 +1,11 @@
 /*tslint:disable*/
 import * as React from 'react';
 import "./index.css";
+//import {RouteElement} from "../RouteElement";
 
 interface proptype {
   value:number;
+  playerName:string
 }
 
 export class Square extends React.Component<proptype, { values:  number[],enteredValues:  Set<string>,checkValues: Set<number>}> {
@@ -63,12 +65,12 @@ export class Square extends React.Component<proptype, { values:  number[],entere
     const valueDuplicate: string = `${valueDup}`;
     for(let index=0;index<this.state.enteredValues.size;index++){
       if(!this.state.enteredValues.has(valueDuplicate)){
-        return <div className="col-lg-2" id={idValue}>{valueDup}</div>; 
+        return <div className="col-lg-2 col-sm-3 col-md-3 " id={idValue}>{valueDup}</div>; 
       }
       else{
         this.state.checkValues.add(indexValue);
         this.checkMethod();
-        return <div className="col-lg-2" id={idValue}><span className="strikethrough">{valueDup}</span></div>;
+        return <div className="col-lg-2 col-sm-3 col-md-3 strikethrough" id={idValue}><span>{valueDup}</span></div>;
 
       }
     }
@@ -76,23 +78,11 @@ export class Square extends React.Component<proptype, { values:  number[],entere
   }
 
 public checkMethod(): void{
-  debugger
-  if(this.state.checkValues.has(0) && this.state.checkValues.has(1) && this.state.checkValues.has(2)){
-    console.log("BINGO!!!");
-  }else if(this.state.checkValues.has(3) && this.state.checkValues.has(4) && this.state.checkValues.has(5)){
-    console.log("BINGO!!!");
-  }else if(this.state.checkValues.has(6) && this.state.checkValues.has(7) && this.state.checkValues.has(8)){
-    console.log("BINGO!!!");
-  }else if(this.state.checkValues.has(0) && this.state.checkValues.has(3) && this.state.checkValues.has(6)){
-    console.log("BINGO!!!");
-  }else if(this.state.checkValues.has(1) && this.state.checkValues.has(4) && this.state.checkValues.has(7)){
-    console.log("BINGO!!!");
-  }else if(this.state.checkValues.has(2) && this.state.checkValues.has(5) && this.state.checkValues.has(8)){
-    console.log("BINGO!!!");
-  }else if(this.state.checkValues.has(0) && this.state.checkValues.has(4) && this.state.checkValues.has(8)){
-    console.log("BINGO!!!");
-  }else if(this.state.checkValues.has(2) && this.state.checkValues.has(4) && this.state.checkValues.has(6)){
-    console.log("BINGO!!!");
+  if(this.state.checkValues.has(0) && this.state.checkValues.has(1) && this.state.checkValues.has(2) || this.state.checkValues.has(3) && this.state.checkValues.has(4) && this.state.checkValues.has(5) || this.state.checkValues.has(6) && this.state.checkValues.has(7) && this.state.checkValues.has(8) || this.state.checkValues.has(0) && this.state.checkValues.has(3) && this.state.checkValues.has(6) || this.state.checkValues.has(1) && this.state.checkValues.has(4) && this.state.checkValues.has(7) || this.state.checkValues.has(2) && this.state.checkValues.has(5) && this.state.checkValues.has(8)|| this.state.checkValues.has(0) && this.state.checkValues.has(4) && this.state.checkValues.has(8) || this.state.checkValues.has(2) && this.state.checkValues.has(4) && this.state.checkValues.has(6)){
+    // console.log(this.props.playerName);
+    // console.log("BINGO!!!");
+    
+   // <RouteElement/>
   }
 }
 

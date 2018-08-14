@@ -5,11 +5,17 @@ import './index.css';
 
 
 
-export class Main extends React.Component<{},{value:number}>{
+export class Main extends React.Component<{},{value:number,playerName: string[]}>{
     constructor(props:any){
         super(props);
+        const players: string[]=[];
+        
+        players[0]="Bhanu";
+        players[1]="Nihanth";
+        players[2]="Prakash";
         this.state={
-         value: -1
+         value: -1,
+         playerName:players
         }
     } 
 
@@ -35,9 +41,9 @@ export class Main extends React.Component<{},{value:number}>{
           <div id='mainDiv'>
           <div id='mainInsideDiv'>
           <div className="row">
-              <div className="col-lg-4"><Square value={this.state.value}/></div>
-              <div className="col-lg-4"><Square value={this.state.value}/> </div>
-              <div className="col-lg-4"><Square value={this.state.value}/></div>
+              <div className="col-lg-4 col-sm-12 col-md-12"><Square playerName={this.state.playerName[0]} value={this.state.value}/></div>
+              <div className="col-lg-4 col-sm-12 col-md-12"><Square playerName={this.state.playerName[1]} value={this.state.value}/> </div>
+              <div className="col-lg-4 col-sm-12 col-md-12"><Square playerName={this.state.playerName[2]} value={this.state.value}/></div>
           </div>  
           </div>
           <div className="col-xs-2">
